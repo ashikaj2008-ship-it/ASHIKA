@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101B35">
+<meta name="description" content="Ashika D. — B.Sc. Computer Technology with Generative AI student, aspiring developer, and technology enthusiast.">
+<title>Ashika D. | Personal Portfolio</title>
+<style>
+:root{
+  --navy:#101B35; --navy2:#172644; --ice:#A9DDF5; --orange:#F28C28;
+  --porcelain:#F2EBDD; --verm:#E34234; --muted:#b8c5d8;
+  --line:rgba(169,221,245,.18); --glass:rgba(255,255,255,.055);
+  --shadow:0 24px 70px rgba(0,0,0,.28); --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--navy);color:var(--porcelain);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 12% 15%,rgba(169,221,245,.12),transparent 28%),radial-gradient(circle at 88% 42%,rgba(242,140,40,.10),transparent 24%),linear-gradient(135deg,#101B35,#0b1429 72%);pointer-events:none}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+.container{width:min(1120px,calc(100% - 40px));margin:auto}
+.section{padding:100px 0;position:relative}
+.section-kicker{color:var(--orange);font-size:.76rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.section-title{font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;letter-spacing:-.04em;margin:12px 0 16px}
+.section-intro{color:var(--muted);max-width:650px;margin:0 0 38px}
+.accent{color:var(--ice)}
+.gradient-text{background:linear-gradient(100deg,var(--ice),var(--porcelain) 55%,var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(16,27,53,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-weight:900;letter-spacing:.04em;font-size:1.08rem}
+.brand span{color:var(--orange)}
+.nav-links{display:flex;align-items:center;gap:26px;color:var(--muted);font-size:.88rem}
+.nav-links a{transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ice)}
+.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;padding:12px 20px;font-weight:800;font-size:.88rem;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.nav-cta,.btn-primary{background:var(--orange);color:#171d2b;box-shadow:0 10px 28px rgba(242,140,40,.2)}
+.btn:hover,.nav-cta:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(242,140,40,.25)}
+.btn-secondary{background:rgba(169,221,245,.08);border:1px solid rgba(169,221,245,.35);color:var(--ice)}
+.menu-toggle{display:none;background:none;border:1px solid var(--line);color:var(--porcelain);border-radius:12px;padding:8px 12px}
+.hero{min-height:100vh;display:grid;align-items:center;padding:130px 0 80px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:60px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 13px;border:1px solid var(--line);border-radius:999px;color:var(--ice);font-size:.78rem;background:rgba(169,221,245,.05)}
+.pulse{width:8px;height:8px;background:var(--orange);border-radius:50%;box-shadow:0 0 0 6px rgba(242,140,40,.12)}
+.hero h1{font-size:clamp(3.1rem,7.4vw,6.3rem);line-height:.98;letter-spacing:-.07em;margin:26px 0 18px}
+.hero h1 .line2{display:block}
+.hero-role{font-size:clamp(1.1rem,2vw,1.45rem);color:var(--ice);font-weight:700;margin-bottom:14px}
+.hero-copy{color:var(--muted);font-size:1.04rem;max-width:590px}
+.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin:30px 0 26px}
+.socials{display:flex;gap:10px;flex-wrap:wrap}
+.socials a{width:39px;height:39px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--ice);font-size:.75rem;font-weight:800;transition:.2s}
+.socials a:hover{background:var(--ice);color:var(--navy);transform:translateY(-3px)}
+.hero-art{min-height:440px;position:relative;display:grid;place-items:center}
+.orbit{position:absolute;width:min(390px,90vw);aspect-ratio:1;border:1px solid rgba(169,221,245,.22);border-radius:50%;animation:spin 28s linear infinite}
+.orbit:before,.orbit:after{content:"";position:absolute;border-radius:50%;background:var(--orange);width:10px;height:10px;top:13%;left:17%;box-shadow:0 0 24px var(--orange)}
+.orbit:after{background:var(--ice);top:auto;left:auto;bottom:12%;right:15%;box-shadow:0 0 24px var(--ice)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.profile-card{width:min(310px,78vw);aspect-ratio: .82;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid rgba(169,221,245,.32);border-radius:34px;background:linear-gradient(145deg,rgba(169,221,245,.13),rgba(255,255,255,.025));box-shadow:var(--shadow);backdrop-filter:blur(16px);position:relative;overflow:hidden}
+.profile-card:before{content:"";position:absolute;width:230px;height:230px;border-radius:50%;background:rgba(242,140,40,.13);filter:blur(35px);top:-80px;right:-60px}
+.avatar{width:142px;height:142px;border-radius:50%;display:grid;place-items:center;font-size:3rem;font-weight:900;color:var(--navy);background:linear-gradient(135deg,var(--ice),var(--porcelain));border:6px solid rgba(255,255,255,.12);box-shadow:0 0 0 12px rgba(169,221,245,.07);position:relative}
+.profile-card h3{font-size:1.35rem;margin:24px 0 2px}
+.profile-card p{color:var(--muted);font-size:.9rem;margin:0}
+.float-tag{position:absolute;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(16,27,53,.88);backdrop-filter:blur(12px);font-size:.78rem;color:var(--ice);box-shadow:var(--shadow)}
+.tag-one{top:14%;left:-2%}.tag-two{right:-4%;bottom:18%;color:var(--orange)}
+.scroll-note{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);font-size:.72rem;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+.scroll-note:after{content:"";display:block;width:1px;height:28px;background:var(--ice);margin:8px auto 0}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.panel,.card{border:1px solid var(--line);background:var(--glass);border-radius:var(--radius);padding:27px;box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.panel p{color:var(--muted)}
+.about-highlight{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+.mini-stat{padding:16px;border-radius:16px;background:rgba(169,221,245,.07);border:1px solid var(--line)}
+.mini-stat strong{display:block;color:var(--ice);font-size:1.2rem}
+.mini-stat span{font-size:.78rem;color:var(--muted)}
+.skill-grid,.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skill-card{padding:22px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(169,221,245,.09),rgba(255,255,255,.025));transition:.25s}
+.skill-card:hover,.card:hover{transform:translateY(-5px);border-color:rgba(169,221,245,.5);box-shadow:0 18px 40px rgba(0,0,0,.2)}
+.skill-icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:rgba(169,221,245,.13);color:var(--ice);font-weight:900;margin-bottom:15px}
+.skill-card h3{margin:0 0 5px;font-size:1rem}
+.skill-card p{margin:0;color:var(--muted);font-size:.84rem}
+.timeline{border-left:1px solid rgba(169,221,245,.35);margin-left:9px;padding-left:28px}
+.timeline-item{position:relative;padding:0 0 30px}
+.timeline-item:before{content:"";position:absolute;left:-34px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 6px rgba(242,140,40,.12)}
+.timeline-item h3{margin:0 0 5px}
+.timeline-item p{margin:0;color:var(--muted)}
+.timeline-item .date{font-size:.78rem;color:var(--ice);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.filter-row{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:22px}
+.filter-btn{border:1px solid var(--line);background:transparent;color:var(--muted);padding:8px 15px;border-radius:999px;cursor:pointer;font-size:.82rem}
+.filter-btn.active,.filter-btn:hover{background:var(--ice);color:var(--navy);border-color:var(--ice)}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.project-card{overflow:hidden;padding:0}
+.project-visual{height:145px;background:linear-gradient(135deg,rgba(169,221,245,.22),rgba(242,140,40,.18));display:grid;place-items:center;font-size:2.4rem;color:var(--ice);border-bottom:1px solid var(--line)}
+.project-body{padding:21px}
+.project-body h3{margin:0 0 8px}
+.project-body p{color:var(--muted);font-size:.87rem;margin:0 0 14px}
+.tags{display:flex;gap:7px;flex-wrap:wrap}
+.tags span{font-size:.7rem;color:var(--ice);padding:5px 9px;background:rgba(169,221,245,.08);border-radius:999px}
+.placeholder-label{font-size:.68rem;color:var(--orange);font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.cert-card{display:flex;gap:14px;align-items:flex-start}
+.cert-mark{flex:0 0 42px;height:42px;border-radius:13px;background:rgba(242,140,40,.13);color:var(--orange);display:grid;place-items:center;font-weight:900}
+.cert-card h3{font-size:.94rem;margin:0 0 5px}
+.cert-card p{font-size:.78rem;color:var(--muted);margin:0}
+.achievement-box{display:flex;align-items:center;gap:18px}
+.achievement-icon{width:58px;height:58px;border-radius:18px;background:rgba(227,66,52,.13);color:var(--verm);display:grid;place-items:center;font-size:1.4rem}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px}
+.contact-item{display:flex;gap:13px;align-items:center;margin:20px 0;color:var(--muted)}
+.contact-item b{display:block;color:var(--porcelain);font-size:.9rem}
+.contact-item small{font-size:.8rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{font-size:.8rem;color:var(--ice)}
+.field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;background:rgba(4,12,27,.3);color:var(--porcelain);padding:12px 14px;outline:none}
+.field input:focus,.field textarea:focus{border-color:var(--ice);box-shadow:0 0 0 3px rgba(169,221,245,.08)}
+.field textarea{min-height:120px;resize:vertical}
+.form-note{color:var(--muted);font-size:.76rem;margin:12px 0 0}
+footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:.8rem}
+.footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.back-top{position:fixed;right:22px;bottom:100px;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--navy2);color:var(--ice);display:none;place-items:center;z-index:30;cursor:pointer}
+.back-top.show{display:grid}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+/* chatbot */
+.chat-launcher{position:fixed;right:22px;bottom:22px;z-index:80;width:62px;height:62px;border:0;border-radius:22px;background:var(--orange);color:#17213a;font-size:1.45rem;cursor:pointer;box-shadow:0 14px 35px rgba(242,140,40,.32);transition:.2s}
+.chat-launcher:hover{transform:translateY(-4px) rotate(-4deg)}
+.chat-window{position:fixed;right:22px;bottom:96px;width:min(380px,calc(100vw - 28px));height:min(560px,calc(100vh - 130px));z-index:79;background:#121f3b;border:1px solid rgba(169,221,245,.35);border-radius:22px;box-shadow:0 25px 80px rgba(0,0,0,.48);display:none;flex-direction:column;overflow:hidden}
+.chat-window.open{display:flex;animation:pop .22s ease}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.chat-header{padding:17px 18px;background:linear-gradient(120deg,#1b3155,#15233e);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.bot-id{display:flex;gap:11px;align-items:center}
+.bot-avatar{width:38px;height:38px;border-radius:13px;background:var(--ice);color:var(--navy);display:grid;place-items:center;font-weight:900}
+.bot-id strong{display:block;font-size:.9rem}
+.bot-id small{color:var(--ice);font-size:.7rem}
+.chat-close{border:0;background:transparent;color:var(--porcelain);font-size:1.3rem;cursor:pointer}
+.chat-messages{padding:16px;flex:1;overflow:auto;display:flex;flex-direction:column;gap:11px}
+.message{max-width:88%;padding:11px 13px;border-radius:15px;font-size:.83rem;line-height:1.5;white-space:pre-wrap}
+.message.bot{align-self:flex-start;background:rgba(169,221,245,.11);border:1px solid rgba(169,221,245,.15);color:var(--porcelain);border-bottom-left-radius:5px}
+.message.user{align-self:flex-end;background:var(--orange);color:#18213a;border-bottom-right-radius:5px}
+.suggestions{padding:0 14px 10px;display:flex;gap:7px;flex-wrap:wrap}
+.suggestion{border:1px solid rgba(169,221,245,.3);background:transparent;color:var(--ice);border-radius:999px;padding:6px 9px;font-size:.69rem;cursor:pointer}
+.suggestion:hover{background:rgba(169,221,245,.12)}
+.chat-input-row{padding:12px;border-top:1px solid var(--line);display:flex;gap:8px}
+.chat-input-row input{min-width:0;flex:1;border:1px solid var(--line);background:rgba(4,12,27,.45);color:var(--porcelain);border-radius:12px;padding:11px 12px;outline:none}
+.chat-input-row button{border:0;border-radius:12px;background:var(--orange);color:#17213a;font-weight:900;padding:0 15px;cursor:pointer}
+.typing{display:flex;gap:4px;align-items:center;padding:12px 14px}
+.typing i{width:5px;height:5px;border-radius:50%;background:var(--ice);animation:bounce .8s infinite alternate}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes bounce{to{opacity:.3;transform:translateY(-4px)}}
+@media(max-width:850px){
+ .hero-grid{grid-template-columns:1fr;gap:20px}.hero-art{min-height:370px}.hero-content{text-align:center}.hero-copy{margin-inline:auto}.hero-actions,.socials{justify-content:center}
+ .skill-grid,.cert-grid,.project-grid{grid-template-columns:repeat(2,1fr)}
+ .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+ .container{width:min(100% - 30px,1120px)}.section{padding:75px 0}.nav-inner{height:68px}
+ .menu-toggle{display:block}.nav-cta{display:none}
+ .nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:18px 24px 22px;background:rgba(16,27,53,.98);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:16px}
+ .nav-links.open{display:flex}
+ .hero{padding-top:110px}.hero-art{min-height:330px}.orbit{width:290px}.profile-card{width:245px}.avatar{width:112px;height:112px;font-size:2.4rem}
+ .tag-one{left:0}.tag-two{right:0}.grid-2{grid-template-columns:1fr}
+ .skill-grid,.cert-grid,.project-grid{grid-template-columns:1fr}
+ .form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}
+ .scroll-note{display:none}.chat-window{right:14px;bottom:88px;height:min(540px,calc(100vh - 110px))}
+ .chat-launcher{right:15px;bottom:15px;width:58px;height:58px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<header class="nav">
+ <div class="container nav-inner">
+  <a class="brand" href="#home">ASHIKA<span>.</span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+   <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#certifications">Certificates</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="nav-cta" href="#contact">Let's Connect ↗</a>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="container hero-grid">
+  <div class="hero-content">
+   <div class="eyebrow"><span class="pulse"></span> OPEN TO LEARNING & OPPORTUNITIES</div>
+   <h1><span class="gradient-text">HELLO,</span><span class="line2">I'M ASHIKA<span class="accent">.</span></span></h1>
+   <div class="hero-role">Aspiring Developer <span style="color:var(--orange)">|</span> Generative AI Enthusiast</div>
+   <p class="hero-copy">Exploring technology, developing creative solutions, and transforming ideas into innovation. I'm building my skills one project and one new challenge at a time.</p>
+   <div class="hero-actions"><a class="btn btn-primary" href="#projects">Explore My Work ↗</a><a class="btn btn-secondary" href="#contact">Let's Connect</a></div>
+   <div class="socials" aria-label="Social links">
+    <a href="#contact" aria-label="GitHub placeholder">GH</a><a href="#contact" aria-label="LinkedIn placeholder">in</a><a href="mailto:your-email@example.com" aria-label="Email">✉</a>
+   </div>
+  </div>
+  <div class="hero-art">
+   <div class="orbit"></div>
+   <div class="float-tag tag-one">✦ Curious mind</div>
+   <div class="float-tag tag-two">Code · Create · Learn</div>
+   <div class="profile-card"><div class="avatar">A.</div><h3>Ashika D.</h3><p>B.Sc. Computer Technology<br>with Generative AI</p></div>
+  </div>
+ </div>
+ <div class="scroll-note">Scroll to explore</div>
+</section>
+
+<section class="section" id="about">
+ <div class="container">
+  <div class="section-kicker">01 / ABOUT ME</div><h2 class="section-title">A little about <span class="gradient-text">who I am.</span></h2>
+  <p class="section-intro">A technology student driven by curiosity, creativity, and a passion for continuous learning.</p>
+  <div class="grid-2">
+   <div class="panel reveal"><h3>Curious by nature. <span class="accent">Driven by technology.</span></h3>
+    <p>I'm Ashika D., a B.Sc. Computer Technology student with a focus on Generative AI at Rathinam Deemed to be University. I'm developing my foundation in programming and exploring how technology can solve real-world problems.</p>
+    <p>I enjoy learning new concepts, strengthening my technical skills, and turning ideas into practical projects.</p>
+    <div class="about-highlight"><div class="mini-stat"><strong>2026–2029</strong><span>Academic journey</span></div><div class="mini-stat"><strong>2</strong><span>Languages: Tamil & English</span></div></div>
+   </div>
+   <div class="panel reveal"><div class="section-kicker">MY INTERESTS</div><h3>What keeps me curious</h3>
+    <p>I'm especially interested in the evolving world of artificial intelligence and software development.</p>
+    <div class="tags"><span>Artificial Intelligence</span><span>Generative AI</span><span>Python</span><span>Web Development</span><span>Databases</span><span>Emerging Tech</span></div>
+    <p style="margin-top:24px">My goal is to keep learning, build meaningful projects, and grow into a capable technology professional.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="skills">
+ <div class="container">
+  <div class="section-kicker">02 / WHAT I KNOW</div><h2 class="section-title">Skills & <span class="gradient-text">technologies.</span></h2>
+  <p class="section-intro">A growing toolkit built through coursework, certifications, and hands-on learning.</p>
+  <div class="skill-grid">
+   <article class="skill-card reveal"><div class="skill-icon">Py</div><h3>Python Programming</h3><p>Programming fundamentals and Python essentials.</p></article>
+   <article class="skill-card reveal"><div class="skill-icon">SQL</div><h3>SQL</h3><p>Foundational knowledge of querying and working with data.</p></article>
+   <article class="skill-card reveal"><div class="skill-icon">HTML</div><h3>HTML</h3><p>Structuring content for web pages.</p></article>
+   <article class="skill-card reveal"><div class="skill-icon">Ja</div><h3>Java Fundamentals</h3><p>Basic understanding of Java programming concepts.</p></article>
+   <article class="skill-card reveal"><div class="skill-icon">DB</div><h3>Database Fundamentals</h3><p>Learning database concepts and data organization.</p></article>
+   <article class="skill-card reveal"><div class="skill-icon">AI</div><h3>Generative AI Fundamentals</h3><p>Exploring generative AI concepts and applications.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="projects">
+ <div class="container">
+  <div class="section-kicker">03 / WHAT I'M BUILDING</div><h2 class="section-title">Selected <span class="gradient-text">projects.</span></h2>
+  <p class="section-intro">A space for experiments, coursework, and projects as I continue developing my skills. Replace these clearly marked placeholders with your real work.</p>
+  <div class="filter-row" role="group" aria-label="Filter projects">
+   <button class="filter-btn active" data-filter="all">All Projects</button><button class="filter-btn" data-filter="python">Python</button><button class="filter-btn" data-filter="web">Web Development</button><button class="filter-btn" data-filter="ai">AI Projects</button>
+  </div>
+  <div class="project-grid" id="projectGrid">
+   <article class="card project-card reveal" data-category="python"><div class="project-visual">⌘</div><div class="project-body"><div class="placeholder-label">Project placeholder</div><h3>Python Practice Project</h3><p>Add a short description of a Python project you have actually completed.</p><div class="tags"><span>Python</span><span>Logic</span></div></div></article>
+   <article class="card project-card reveal" data-category="web"><div class="project-visual">◇</div><div class="project-body"><div class="placeholder-label">Project placeholder</div><h3>Personal Web Page</h3><p>Replace this with details of a real website or web development project.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></div></article>
+   <article class="card project-card reveal" data-category="ai"><div class="project-visual">✧</div><div class="project-body"><div class="placeholder-label">Project placeholder</div><h3>Generative AI Exploration</h3><p>Add a verified description of an AI-related project when you complete one.</p><div class="tags"><span>Generative AI</span><span>Research</span></div></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="education">
+ <div class="container">
+  <div class="section-kicker">04 / MY JOURNEY</div><h2 class="section-title">Education & <span class="gradient-text">learning.</span></h2>
+  <p class="section-intro">Building a strong foundation in computer technology and emerging areas of computing.</p>
+  <div class="panel reveal"><div class="timeline">
+   <div class="timeline-item"><div class="date">2026 – 2029</div><h3>B.Sc. Computer Technology with Generative AI</h3><p>Rathinam Deemed to be University</p><p>Currently pursuing undergraduate studies.</p></div>
+  </div></div>
+ </div>
+</section>
+
+<section class="section" id="certifications">
+ <div class="container">
+  <div class="section-kicker">05 / CONTINUOUS LEARNING</div><h2 class="section-title">Certificates & <span class="gradient-text">learning.</span></h2>
+  <p class="section-intro">Courses and certifications that support my growing technical and professional skill set.</p>
+  <div class="cert-grid">
+   <article class="card cert-card reveal"><div class="cert-mark">01</div><div><h3>Python Essentials</h3><p>Programming</p></div></article>
+   <article class="card cert-card reveal"><div class="cert-mark">02</div><div><h3>Java Programming Fundamentals</h3><p>Programming</p></div></article>
+   <article class="card cert-card reveal"><div class="cert-mark">03</div><div><h3>Programming Fundamentals – Introduction to Programming</h3><p>Programming</p></div></article>
+   <article class="card cert-card reveal"><div class="cert-mark">04</div><div><h3>Programming Fundamentals – Object-Oriented Programming</h3><p>Programming</p></div></article>
+   <article class="card cert-card reveal"><div class="cert-mark">05</div><div><h3>Business Communications</h3><p>Professional skills</p></div></article>
+   <article class="card cert-card reveal"><div class="cert-mark">06</div><div><h3>Effective Presentations</h3><p>Communication</p></div></article>
+   <article class="card cert-card reveal"><div class="cert-mark">07</div><div><h3>Critical Thinking in the AI Era</h3><p>Critical thinking</p></div></article>
+   <article class="card cert-card reveal"><div class="cert-mark">08</div><div><h3>Business Email</h3><p>Professional communication</p></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="achievements">
+ <div class="container">
+  <div class="section-kicker">06 / MILESTONES</div><h2 class="section-title">Achievements & <span class="gradient-text">highlights.</span></h2>
+  <p class="section-intro">A growing collection of milestones. Add verified achievements here as they happen.</p>
+  <div class="panel achievement-box reveal"><div class="achievement-icon">✦</div><div><div class="placeholder-label">Ready to update</div><h3 style="margin:4px 0">Your next achievement goes here</h3><p style="color:var(--muted);margin:0">Add the title, date, and a short description of an achievement you can verify.</p></div></div>
+ </div>
+</section>
+
+<section class="section" id="contact">
+ <div class="container">
+  <div class="section-kicker">07 / GET IN TOUCH</div><h2 class="section-title">Let's create something <span class="gradient-text">meaningful.</span></h2>
+  <p class="section-intro">Have an opportunity, idea, or question? I'd be happy to hear from you.</p>
+  <div class="contact-grid">
+   <div class="panel reveal"><h3>Contact details</h3><p style="color:var(--muted)">Update the placeholders below with your preferred public contact links before publishing.</p>
+    <div class="contact-item"><span class="skill-icon">✉</span><div><b>Email</b><small>your-email@example.com</small></div></div>
+    <div class="contact-item"><span class="skill-icon">GH</span><div><b>GitHub</b><small>Add your GitHub profile URL</small></div></div>
+    <div class="contact-item"><span class="skill-icon">in</span><div><b>LinkedIn</b><small>Add your LinkedIn profile URL</small></div></div>
+   </div>
+   <form class="panel reveal" id="contactForm">
+    <div class="form-grid">
+     <div class="field"><label for="senderName">Your name</label><input id="senderName" required placeholder="Enter your name"></div>
+     <div class="field"><label for="senderEmail">Your email</label><input id="senderEmail" type="email" required placeholder="name@example.com"></div>
+     <div class="field full"><label for="senderMessage">Message</label><textarea id="senderMessage" required placeholder="Write your message..."></textarea></div>
+     <div class="field full"><button class="btn btn-primary" type="submit">Validate message ↗</button></div>
+    </div>
+    <p class="form-note" id="formNote">Demo form: it validates your message in this browser but does not send or store it. Connect an email service to enable delivery.</p>
+   </form>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer><div class="container footer-inner"><span>© <span id="year"></span> Ashika D. All rights reserved.</span><span>Designed with curiosity, code & creativity.</span><a href="#home" style="color:var(--ice)">Back to top ↑</a></div></footer>
+<button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+<button class="chat-launcher" id="chatLauncher" aria-label="Open Ask Ashika AI" aria-expanded="false">✧</button>
+<section class="chat-window" id="chatWindow" aria-label="Ask Ashika AI chat" aria-hidden="true">
+ <div class="chat-header">
+  <div class="bot-id"><div class="bot-avatar">AI</div><div><strong>ASK ASHIKA AI</strong><small>Portfolio assistant · Online</small></div></div>
+  <button class="chat-close" id="chatClose" aria-label="Close chat">×</button>
+ </div>
+ <div class="chat-messages" id="chatMessages" aria-live="polite"><div class="message bot">Hey there! Welcome to my portfolio. I'm ASK ASHIKA AI. Ask me about Ashika's education, skills, certifications, projects, and interests!</div></div>
+ <div class="suggestions" id="suggestions">
+  <button class="suggestion">Who is Ashika?</button><button class="suggestion">What is she studying?</button><button class="suggestion">What skills does she have?</button><button class="suggestion">List her certificates</button>
+ </div>
+ <form class="chat-input-row" id="chatForm"><input id="chatInput" autocomplete="off" placeholder="Ask me about Ashika..." aria-label="Type your question"><button type="submit" aria-label="Send message">➤</button></form>
+</section>
+
+<script>
+"use strict";
+const $ = (selector, root=document) => root.querySelector(selector);
+const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
+
+$("#year").textContent = new Date().getFullYear();
+
+// Mobile navigation
+const menuToggle = $("#menuToggle"), navLinks = $("#navLinks");
+menuToggle.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+$$(".nav-links a").forEach(link => link.addEventListener("click", () => {
+  navLinks.classList.remove("open"); menuToggle.setAttribute("aria-expanded","false");
+}));
+
+// Active navigation and back-to-top
+const backTop = $("#backTop");
+window.addEventListener("scroll", () => {
+  backTop.classList.toggle("show", window.scrollY > 500);
+  const current = [...$$("main section[id]")].reverse().find(section => window.scrollY >= section.offsetTop - 150);
+  $$(".nav-links a").forEach(link => link.classList.toggle("active", current && link.getAttribute("href") === "#" + current.id));
+});
+backTop.addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
+
+// Reveal-on-scroll
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+    if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target);}
+  }), {threshold:.12});
+  $$(".reveal").forEach(el => observer.observe(el));
+} else $$(".reveal").forEach(el => el.classList.add("visible"));
+
+// Project filters
+$$(".filter-btn").forEach(button => button.addEventListener("click", () => {
+  $$(".filter-btn").forEach(btn => btn.classList.remove("active"));
+  button.classList.add("active");
+  const filter = button.dataset.filter;
+  $$(".project-card").forEach(card => {
+    card.style.display = filter === "all" || card.dataset.category === filter ? "" : "none";
+  });
+}));
+
+// Contact form: front-end validation only, no message delivery.
+$("#contactForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const name = $("#senderName").value.trim();
+  const email = $("#senderEmail").value.trim();
+  const message = $("#senderMessage").value.trim();
+  const note = $("#formNote");
+  if(!name || !email || !message){note.textContent = "Please complete all fields.";return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){note.textContent = "Please enter a valid email address.";return;}
+  note.textContent = "Thanks, " + name + "! Your message is valid. This demo does not send it; please use the listed contact links.";
+  $("#contactForm").reset();
+});
+
+// ASK ASHIKA AI: offline knowledge-base chatbot (not a generative AI model).
+const knowledge = [
+ {keys:["who is ashika","about ashika","introduce ashika","tell me about ashika","who are you"],answer:"Ashika D. is a B.Sc. Computer Technology with Generative AI student at Rathinam Deemed to be University. She is interested in programming, artificial intelligence, and software development."},
+ {keys:["what is she studying","what does ashika study","degree","qualification","education","university","college"],answer:"Ashika is pursuing a B.Sc. in Computer Technology with Generative AI at Rathinam Deemed to be University (2026–2029)."},
+ {keys:["skill","technologies","programming languages","what languages","python","java","sql","html"],answer:"Ashika has knowledge of Python, SQL, HTML, basic Java programming, database management fundamentals, programming fundamentals, and Generative AI fundamentals."},
+ {keys:["certificate","certification","course","courses"],answer:"Her listed certifications are Python Essentials; Java Programming Fundamentals; Programming Fundamentals – Introduction to Programming; Programming Fundamentals – Object-Oriented Programming; Business Communications; Effective Presentations; Critical Thinking in the AI Era; and Business Email."},
+ {keys:["interest","career","goal","objective","future"],answer:"Ashika's interests include artificial intelligence, Generative AI, Python development, software development, databases, and emerging technologies. Her goal is to keep learning and build meaningful projects."},
+ {keys:["project","github","portfolio work","work has she done"],answer:"The Projects section currently contains clearly labelled placeholders. Add Ashika's verified completed projects there as they become available."},
+ {keys:["experience","internship","work experience"],answer:"Ashika is presented here as a student and aspiring developer. No professional work experience is currently listed in this portfolio."},
+ {keys:["language","speak","tamil","english"],answer:"The languages listed in Ashika's profile are Tamil and English."},
+ {keys:["contact","email","reach","linkedin","phone"],answer:"Please use the Contact section of this portfolio. Replace its email, GitHub, and LinkedIn placeholders with Ashika's preferred public contact details."},
+ {keys:["achievement","award","accomplishment"],answer:"The Achievements section is ready to be updated with verified accomplishments. No specific achievement is currently listed in this portfolio."}
+];
+function getBotAnswer(question){
+ const q = question.toLowerCase().replace(/[^a-z0-9\s]/g," ").replace(/\s+/g," ").trim();
+ if(!q) return "Please type a question about Ashika.";
+ let best = null, bestScore = 0;
+ for(const item of knowledge){
+  let score = 0;
+  for(const key of item.keys){
+   const k = key.toLowerCase();
+   if(q.includes(k)) score = Math.max(score, k.split(" ").length + 2);
+   else if(k.split(" ").some(word => word.length > 3 && q.split(" ").includes(word))) score = Math.max(score,1);
+  }
+  if(score > bestScore){bestScore=score;best=item;}
+ }
+ return best && bestScore >= 2 ? best.answer : "I don't have verified information about that yet. Please explore Ashika's portfolio or contact her directly.";
+}
+const chatWindow = $("#chatWindow"), chatLauncher = $("#chatLauncher"), chatMessages = $("#chatMessages"), chatInput = $("#chatInput");
+function toggleChat(open){
+ chatWindow.classList.toggle("open",open);
+ chatWindow.setAttribute("aria-hidden",String(!open));
+ chatLauncher.setAttribute("aria-expanded",String(open));
+ if(open) setTimeout(()=>chatInput.focus(),80);
+}
+chatLauncher.addEventListener("click",()=>toggleChat(!chatWindow.classList.contains("open")));
+$("#chatClose").addEventListener("click",()=>toggleChat(false));
+function addMessage(text,who){
+ const message=document.createElement("div");
+ message.className="message "+who;
+ message.textContent=text;
+ chatMessages.appendChild(message);
+ chatMessages.scrollTop=chatMessages.scrollHeight;
+}
+function sendQuestion(question){
+ const clean=question.trim(); if(!clean)return;
+ addMessage(clean,"user");
+ chatInput.value="";
+ const typing=document.createElement("div");
+ typing.className="message bot typing"; typing.innerHTML="<i></i><i></i><i></i>";
+ chatMessages.appendChild(typing);chatMessages.scrollTop=chatMessages.scrollHeight;
+ window.setTimeout(()=>{
+  typing.remove();addMessage(getBotAnswer(clean),"bot");
+ },550);
+}
+$("#chatForm").addEventListener("submit",event=>{event.preventDefault();sendQuestion(chatInput.value);});
+$$(".suggestion").forEach(button=>button.addEventListener("click",()=>sendQuestion(button.textContent)));
+</script>
+</body>
+</html>
